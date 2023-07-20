@@ -41,10 +41,7 @@ class MyIntegerImplTest {
     @Test
     void add() {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
-        assertAll(
-                () -> assertEquals(222, myIntegerList.add(222)),
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.add(null))
+        assertAll(() -> assertEquals(222, myIntegerList.add(222)), () -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.add(null))
 
         );
 
@@ -59,31 +56,14 @@ class MyIntegerImplTest {
         myIntegerList.add(0, 2);
         myIntegerList.add(0, 1);
 
-        assertAll(
-                () -> assertEquals(222, myIntegerList.add(0, 222)),
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.add(2, null)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.add(-1, 0)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.add(MAX, 0)),
-                () -> assertEquals("222; 1; 2; 3; 4", myIntegerList.toString())
-        );
+        assertAll(() -> assertEquals(222, myIntegerList.add(0, 222)), () -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.add(2, null)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.add(-1, 0)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.add(MAX, 0)), () -> assertEquals("222; 1; 2; 3; 4", myIntegerList.toString()));
     }
 
     @Test
     void set() {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
         myIntegerList.add(0);
-        assertAll(
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.set(0, null)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.set(-1, 0)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.set(MAX, 0)),
-                () -> assertEquals(10, myIntegerList.set(0, 10))
-        );
+        assertAll(() -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.set(0, null)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.set(-1, 0)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.set(MAX, 0)), () -> assertEquals(10, myIntegerList.set(0, 10)));
     }
 
     @Test
@@ -94,12 +74,7 @@ class MyIntegerImplTest {
         myIntegerList.add(333);
         myIntegerList.add(444);
         myIntegerList.add(555);
-        assertAll(
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.removeByItem(null)),
-                () -> assertEquals(111, myIntegerList.removeByItem(111)),
-                () -> assertThrows(MyExcNoSuchElement.class, () ->
-                        myIntegerList.removeByItem(999))
+        assertAll(() -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.removeByItem(null)), () -> assertEquals(111, myIntegerList.removeByItem(111)), () -> assertThrows(MyExcNoSuchElement.class, () -> myIntegerList.removeByItem(999))
 
         );
 
@@ -109,14 +84,7 @@ class MyIntegerImplTest {
     void RemoveByIndex() {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
         myIntegerList.add(111);
-        assertAll(
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.removeByIndex(-1)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.removeByIndex(MAX)),
-                () -> assertEquals(111, myIntegerList.removeByIndex(0)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.removeByIndex(2))
+        assertAll(() -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.removeByIndex(-1)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.removeByIndex(MAX)), () -> assertEquals(111, myIntegerList.removeByIndex(0)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.removeByIndex(2))
 
         );
 
@@ -126,12 +94,7 @@ class MyIntegerImplTest {
     void contains() {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
         myIntegerList.add(111);
-        assertAll(
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.contains(null)),
-                () -> assertTrue(myIntegerList.contains(111)),
-                () -> assertFalse(myIntegerList.contains(222))
-        );
+        assertAll(() -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.contains(null)), () -> assertTrue(myIntegerList.contains(111)), () -> assertFalse(myIntegerList.contains(222)));
 
 
     }
@@ -140,12 +103,7 @@ class MyIntegerImplTest {
     void indexOf() {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
         myIntegerList.add(111);
-        assertAll(
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.indexOf(null)),
-                () -> assertEquals(0, myIntegerList.indexOf(111)),
-                () -> assertEquals(-1, myIntegerList.indexOf(222))
-        );
+        assertAll(() -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.indexOf(null)), () -> assertEquals(0, myIntegerList.indexOf(111)), () -> assertEquals(-1, myIntegerList.indexOf(222)));
 
     }
 
@@ -154,12 +112,7 @@ class MyIntegerImplTest {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
         myIntegerList.add(111);
         myIntegerList.add(111);
-        assertAll(
-                () -> assertThrows(MyExcPutYourNullToYourAnal.class, () ->
-                        myIntegerList.lastIndexOf(null)),
-                () -> assertEquals(1, myIntegerList.lastIndexOf(111)),
-                () -> assertEquals(-1, myIntegerList.lastIndexOf(222))
-        );
+        assertAll(() -> assertThrows(MyExcPutYourNullToYourAnal.class, () -> myIntegerList.lastIndexOf(null)), () -> assertEquals(1, myIntegerList.lastIndexOf(111)), () -> assertEquals(-1, myIntegerList.lastIndexOf(222)));
 
     }
 
@@ -168,11 +121,7 @@ class MyIntegerImplTest {
         MyIntegerListImpl myIntegerList = new MyIntegerListImpl(10);
         Integer expected = 333;
         myIntegerList.add(expected);
-        assertAll(
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.get(-1)),
-                () -> assertThrows(MyIndexOutOfBoundsException.class, () ->
-                        myIntegerList.get(2)),
+        assertAll(() -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.get(-1)), () -> assertThrows(MyIndexOutOfBoundsException.class, () -> myIntegerList.get(2)),
 
                 () -> assertEquals(expected, myIntegerList.get(0))
 
@@ -203,14 +152,7 @@ class MyIntegerImplTest {
         myIntegerList22.add(222);
 
 
-        assertAll(
-                () -> assertThrows(MyExcNullArrayInParam.class, () ->
-                        myIntegerList1.equals(null)),
-                () -> assertTrue(myIntegerList1.equals(myIntegerList11)),
-                () -> assertTrue(myIntegerList1.equals(myIntegerList1)),
-                () -> assertFalse(myIntegerList1.equals(myIntegerList2)),
-                () -> assertFalse(myIntegerList1.equals(myIntegerList22))
-        );
+        assertAll(() -> assertThrows(MyExcNullArrayInParam.class, () -> myIntegerList1.equals(null)), () -> assertTrue(myIntegerList1.equals(myIntegerList11)), () -> assertTrue(myIntegerList1.equals(myIntegerList1)), () -> assertFalse(myIntegerList1.equals(myIntegerList2)), () -> assertFalse(myIntegerList1.equals(myIntegerList22)));
     }
 
     @Test
@@ -233,10 +175,7 @@ class MyIntegerImplTest {
         myIntegerList1.add(111);
         myIntegerList1.add(222);
         myIntegerList1.add(333);
-        assertAll(
-                () -> assertFalse(myIntegerList1.isEmpty()),
-                () -> assertTrue(myIntegerList2.isEmpty())
-        );
+        assertAll(() -> assertFalse(myIntegerList1.isEmpty()), () -> assertTrue(myIntegerList2.isEmpty()));
     }
 
     @Test
@@ -247,9 +186,7 @@ class MyIntegerImplTest {
         myIntegerList1.add(222);
         myIntegerList1.add(333);
         myIntegerList1.clear();
-        assertAll(
-                () -> assertTrue(myIntegerList1.isEmpty())
-        );
+        assertAll(() -> assertTrue(myIntegerList1.isEmpty()));
 
     }
 
@@ -296,7 +233,19 @@ class MyIntegerImplTest {
         iList1.add(2);
         iList1.add(1);
         iList1.add(0);
-        iList1.sortSelectionFastest();
+        iList1.sortSelection();
+        assertEquals("0; 1; 2; 3", iList1.toString());
+    }
+
+
+    @Test
+    void shouldSortQuickSort() {
+        MyIntegerListImpl iList1 = new MyIntegerListImpl(10);
+        iList1.add(3);
+        iList1.add(2);
+        iList1.add(1);
+        iList1.add(0);
+        iList1.sortQuickSort();
         assertEquals("0; 1; 2; 3", iList1.toString());
     }
 

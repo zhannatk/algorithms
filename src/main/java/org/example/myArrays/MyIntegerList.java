@@ -110,13 +110,7 @@ public interface MyIntegerList {
 
     void sortBubble();
 
-    void sortSelectionFastest();
+    void sortSelection();
 
-    default void swapElements(Integer[] arr, int indexA, int indexB) {
-        int tmp = arr[indexA];
-        arr[indexA] = arr[indexB];
-        arr[indexB] = tmp;
-    }
-
-
+    void sortQuickSort();
 }

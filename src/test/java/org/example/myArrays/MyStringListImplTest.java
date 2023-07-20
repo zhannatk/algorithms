@@ -3,12 +3,9 @@ package org.example.myArrays;
 
 import org.example.exc.*;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class StringListImplTest {
+class MyStringListImplTest {
     private final int MAX = MyStringListImpl.MAX_SHADOW_SIZE;
 
     @Test
@@ -268,7 +265,7 @@ class StringListImplTest {
             stringList1.add(s);
         }
 
-        assertTrue(Arrays.equals(S, stringList1.toArray()));
+        assertArrayEquals(S, stringList1.toArray());
 
 
     }

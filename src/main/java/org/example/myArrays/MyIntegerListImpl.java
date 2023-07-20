@@ -265,7 +265,7 @@ public class MyIntegerListImpl implements MyIntegerList {
      * isSorted, который отслеживает факт сортировки массива
      */
     @Override
-    public void sortSelectionFastest() {
+    public void sortSelection() {
         for (int i = 0; i < sizeWork - 1; i++) {
             int minElementIndex = i;
             for (int j = i + 1; j < sizeWork; j++) {
@@ -315,5 +315,45 @@ public class MyIntegerListImpl implements MyIntegerList {
         return res;
     }
 
+    @Override
+
+    public void sortQuickSort() {
+        quickSort(0, sizeWork - 1);
+        isSorted = true;
+
+    }
+
+
+    private void quickSort(int begin, int end) {
+
+        if (begin < end) {
+            int partitionIndex = partition(begin, end);
+
+            quickSort(begin, partitionIndex - 1);
+            quickSort(partitionIndex + 1, end);
+        }
+    }
+
+    private int partition(int begin, int end) {
+        int pivot = shadowArray[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (shadowArray[j] <= pivot) {
+                i++;
+
+                swapElements(shadowArray, i, j);
+            }
+        }
+
+        swapElements(shadowArray, i + 1, end);
+        return i + 1;
+    }
+
+    private void swapElements(Integer[] arr, int indexA, int indexB) {
+        int tmp = arr[indexA];
+        arr[indexA] = arr[indexB];
+        arr[indexB] = tmp;
+    }
 
 }
